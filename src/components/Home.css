@@ -31,3 +31,11 @@
     border-radius: 8px;
     border: 1px solid;
 }
+
+.ant-table-thread tr th {
+    font-weight: bold;
+}
+
+.ant-table-thread tbody tr td:nth-child(1) {
+    font-weight: bold;
+}

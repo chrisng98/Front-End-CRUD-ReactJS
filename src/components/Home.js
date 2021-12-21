@@ -17,8 +17,8 @@ const Home = (pageNumber) => {
   const [editingUser, setEditingUser] = useState("");
   const [creatingUser, setCreatingUser] = useState("");
 
-  const baseURL = "https://gorest.co.in/public/v1/users";
-  const access_token = "Bearer e674632c9b025add4e8dae16ed205f1fb55ee6f6a7b58abd82bf3161f81c1392"
+  const baseURL = process.env.React_App_baseURL;
+  const access_token = process.env.React_App_access_token;
   
   const columns = [
       {
@@ -110,7 +110,7 @@ const Home = (pageNumber) => {
       console.log(error)
     }
 
-  },[page, refresh]);
+  },[page, refresh, baseURL]);
 
   if (!post) return null;
 
@@ -127,6 +127,7 @@ const Home = (pageNumber) => {
     setIsEditing(true);
     setEditingUser({...record})
   }
+
 
   const onDeleteUser = async (id) => {
     try {
@@ -279,6 +280,7 @@ const Home = (pageNumber) => {
               </Modal>
             <div>
             <Table
+                  className="ant-table-thread"
                   rowKey= "id"
                   columns = {columns}
                   dataSource={post.data}
